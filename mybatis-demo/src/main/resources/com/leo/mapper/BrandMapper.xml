@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+namespace:名稱空間
+-->
+<mapper namespace="com.leo.mapper.BrandMapper">
+    <!--添加數據操作
+ -->
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_brand (brand,price,id,runner)
+        values(#{brand},#{price},#{id},#{runner})
+    </insert>
+
+    <!-- 修改全部字段操作-->
+<!--    <update id="update">-->
+<!--    update tb_brand-->
+<!--        set-->
+<!--        brand = #{brand},-->
+<!--        price = #{price},-->
+<!--        id = #{id},-->
+<!--        runner = #{runner};-->
+<!--    where id = #{id}-->
+<!--    </update>-->
+
+    <!-- 動態修改字段操作-->
+    <update id="update">
+        update tb_brand
+        <set>
+            <if test="brand != null and brand != ''">
+                brand = #{brand},
+            </if>
+            <if test="price != null ">
+                price = #{price},
+            </if>
+
+            <if test="runner != null and runner != ''">
+                runner = #{runner},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 刪除一行數據字段操作-->
+    <delete id="deleteById">
+        delete from tb_brand where id=#{id}
+    </delete>
+    <!-- 根據id數組批量刪除數據操作-->
+    <!--
+    通過foreach遍歷，mybatis會將數組參數，封裝稱為一個Map集合
+    （1）默認：array=數組
+    （2）使用@param註解改變map集合默認key的名稱
+    separator是設置分隔符，
+    open:開始時拼接什麼
+    close：關閉時拼接什麼
+    -->
+    <delete id="deleteByIds">
+        delete from tb_brand
+        where id in
+        <foreach collection="ids" item="id" separator=","
+        open="(" close=")">
+        #{id}
+       </foreach>
+    </delete>
+<!--    <delete id="deleteByIds">-->
+<!--        delete from tb_brand-->
+<!--        where id in-->
+<!--        (-->
+<!--        <foreach collection="ids" item="id" separator=",">-->
+<!--            #{id}-->
+<!--        </foreach>-->
+<!--        )-->
+<!--    </delete>-->
+
+    <!--
+    數據庫表的字段名稱和實體類的屬性名稱不一樣，則不能自動封裝數據
+     解決方法：（法1）對不一樣的列名起別名  例如select brand_name as brandName
+              （法2）將需要修改的列名部分放入sql片段中，然後引用
+              <sql  id="sql片段名"> 查詢的表數據列名（包括起別名部分）</sql>
+              通過<include refid="sql片段名"/>插入到select後即可
+              缺點：不灵活
+            （法3）resultmap映射
+            第一步写<resultMap>映射文件
+            id完成主键字段的映射，result完成一般字段的映射
+            <resultMap id="唯一id名" type="映射的javabean类">
+            <result column="数据库要修改的表的列名" property="所对应的Javabean类中的属性名" />
+            </resultMap>
+            result可以写多个
+            第二步需要将<select>标签中的resultType修改为resultMap,值即为唯一id名
+    -->
+    <!--statement-->
+    <select id="selectAll" resultType="brand">
+        select * from tb_brand;
+    </select>
+
+    <!--
+    参数占位符： 1.#{} :会将其替换为？ 为了防止SQL注入
+                 2.${} :拼sql，会存在SQL注入问题
+                 3.使用时机：参数传递的时候：#{}
+                   表名或者列名不固定的情况下：${}
+                 参数类型：parameterType:可以省略
+                 特殊字符处理：1.转义字符  &lt; 小于  &gt; 大于
+                              2.CDATA区  <![CDATA[ 特殊字符 ]]>
+    -->
+    <select id="selectById" resultType="brand">
+        select *
+        from tb_brand where id = #{id};
+    </select>
+
+<!--    &lt;!&ndash;条件查询的SQL&ndash;&gt;-->
+<!--    <select id="selectByCondition" resultType="brand">-->
+<!--        select * from tb_brand-->
+<!--        where  brand= #{brand}-->
+<!--        and runner like #{runner}-->
+<!--    </select>-->
+
+    <!--条件查询优化-动态SQL
+注意：这种写法不能去掉第一个查询条件进行查询，否则会语法报错（语句为and开头）。
+解决方法：在where后加一个恒等式 1=1 然后在第一个条件前加and即可解决。
+               或用<where>标签替代恒等式
+    -->
+    <select id="selectByCondition" resultType="brand">
+        select * from tb_brand
+<!--        where 1=1-->
+        <where>
+            <!-- brand为字符串，需要不等于空且不等于空字符串-->
+            <if test="brand != null and brand != '' " >
+                and brand=#{brand}
+            </if>
+            <if test="runner != null and runner != ''">
+                and   runner like #{runner}
+            </if>
+        </where>
+    </select>
+
+    <!--  单条件查询choose-->
+<!--    <select id="selectByConditionSingle" resultType="brand">-->
+<!--        select * from tb_brand-->
+<!--        where-->
+<!--        <choose>&lt;!&ndash;相当于switch&ndash;&gt;-->
+<!--            <when test="brand != null and brand != ''">-->
+<!--                brand=#{brand}-->
+<!--            </when>&lt;!&ndash;相当于case&ndash;&gt;-->
+<!--            <when test="runner != null and runner != ''">-->
+<!--                runner like #{runner}-->
+<!--            </when>&lt;!&ndash;相当于case&ndash;&gt;-->
+<!--            <otherwise> &lt;!&ndash;防止不选择条件的时候&ndash;&gt;-->
+<!--                1=1-->
+<!--            </otherwise>-->
+<!--        </choose>-->
+<!--    </select>-->
+    <select id="selectByConditionSingle" resultType="brand">
+        select * from tb_brand
+        <where>
+            <choose><!--相当于switch-->
+                <when test="brand != null and brand != ''">
+                    brand=#{brand}
+                </when><!--相当于case-->
+                <when test="runner != null and runner != ''">
+                    runner like #{runner}
+                </when><!--相当于case-->
+            </choose>
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,59 @@
+https://dev.mysql.com/downloads/mysql/
+http://10.196.5.140:8080/fea_dataanalysis_general/
+https://www.mvnjar.com/mysql/mysql-connector-java/8.0.15/detail.html  //開源插件網站
+http://10.196.5.140:8080/ksace/ACE昆山
+http://10.196.5.140:8080/fea_dataanalysis_web/寶源
+http://10.196.5.140:8080/fea_dataanalysis_general/通用
+https://www.runoob.com/java/java-mysql-connect.html 學習網址
+https://www.sdbeta.com/wg/2019/0509/229677.html idea破解網址
+http://www.ftz6.com/fantizi.html  字體轉換
+https://www.cnblogs.com/limn/p/9358657.html tomcat
+https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin/3.1   maven插件
+http://10.196.5.140:8080/bkids_typec  華為type_c
+http://10.196.5.140:8080/bkids_fpc/   華為FPC
+http://10.196.7.39:7002/shiftcard/list_shiftcard.asp?geb01=GKQ-126709&gea02=202103&geb05=F0840765    查加班時長的網址
+mhlh-hr-proj2@mail.foxconn.com              增廣：
+
+KS-FEA2-GRP1/FIT/FOXCONN, CN1-FEA-GRP/FIT/FOXCONN, David D.H. Wu/FIT/FOXCONN, Sandy J.P. Qian/FIT/FOXCONN, Monica Y.Y. Luo/FIT/FOXCONN, Ken Tang/FIT/FOXCONN
+Figo H. Ye/FIT/FOXCONN
+KS-FEA2-GRP1/FIT/FOXCONN      Hi  陳杰：
+http://10.196.5.140:8080/ksacess   x1983
+, Allen G.S. Lee/FIT/FOXCONN, David P.L. Sun/FIT/FOXCONN
+賬號：F0836885
+密碼：Fea123456  Bruce@fea123   
+http://10.196.7.33:7006/HomePage.asp   erp賬號
+570-62228  ks採購 宋崇慧
+http://112.efoxconn.com/Home/Index    112電話表單申請系統 
+
+ken@2202  5.36  密碼
+https://itsm.one-fit.com/HomePage.do   資訊保修平台
+
+http://www.mobanwang.com/   網頁界面模板
+https://pypi.org/search/?q=pip
+OA  password: Bruce202303
+
+應用憑證： clientId.f943e7c0-51de-11ed-901b-67ebd6516a0b
+
+分泌：secrete.c3d23c7b-c2cf-4c0e-bc05-8214d1dbad0c
+
+clientId.c691e3b0-60aa-11ed-901b-67ebd6516a0b
+
+分泌：secrete.338df7fb-077f-439a-8716-745c6cf0530d
+
+secrete.0345c0c4-1cb7-4e83-91a2-1d75a7b8b450
+
+'user': {'_id': '62aca8d8b17f259d65bbc769', 'name': 'fea', 'username': 'fea', 'role': 'p-owner'}, 'client': '636c74f2b17f259d65da8b5a', 'token': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWNhOGQ4YjE3ZjI1OWQ2NWJiYzc2OSIsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNjY4MjMxODg1LCJleHAiOjE2OTk3Njc4ODV9.mcdz_r6DKRsOsfGimGV9w8rjENgTJNxOQCDkQLWiFGQ'}}
+
+
+5.150 
+
+CBK/FEAadmin   fea@bkfit123
+
+5.140
+FEA
+BK-FEA02\FEA
+password Foxconn@123+
+
+http://10.196.7.39:7002/   電子表單系統
+
+BK-FEA1-GRP2@fit-foxconn.com  O365 郵箱 密碼 Bruce@202309 
