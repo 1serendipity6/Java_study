@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--1.開啟context命名空間-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+>
+
+<!--2.使用context空間加載properties-->
+    <context:property-placeholder location="classpath*:*.properties " system-properties-mode="NEVER"/>
+<!--    3.使用屬性佔位符 ${} 讀取properties文件中的屬性-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" >
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+<!--    &lt;!&ndash;管理druid连接池DataSource對象&ndash;&gt;-->
+<!--    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
+<!--    <property name="url" value="jdbc:mysql://10.196.7.241/db2"/>-->
+<!--    <property name="username" value="root"/>-->
+<!--    <property name="password" value="123456"/>-->
+<!--</bean>-->
+
+
+<!--c3p0連接池-->
+<!--    <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource2">-->
+<!--        <property name="driverClass" value="com.mysql.jdbc.Driver"/>-->
+<!--        <property name="jdbcUrl" value="jdbc:mysql://10.196.7.241/db2"/>-->
+<!--        <property name="user" value="root"/>-->
+<!--        <property name="password" value="123456"/>-->
+<!--    </bean>-->
+</beans>
