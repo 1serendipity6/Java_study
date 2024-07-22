@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--1.導入spring坐標 spring-context,對應版本是5.2.10.RELEASE-->
+
+   <!--2.bean標籤配置bean-->
+    <!--id:對象的唯一標識，對應於我們的java對象-->
+    <!--class:對應我們的java對象的全限定名-->
+    <bean id="bookDao" class="com.leo.dao.impl.BookDaoImpl"/>
+
+    <bean id="bookService" class="com.leo.service.impl.BookServiceImpl">
+        <!--7.配置service與dao的關係-->
+<!--        property標籤表示配置當前bean的屬性-->
+<!--        name屬性表示配置哪一個具體的屬性-->
+<!--        ref屬性表示配置這個屬性的值是另一個bean的id-->
+        <property name="bookDao" ref="bookDao"/>
+    </bean>
+</beans>

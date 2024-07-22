@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    2.2構造器注入-簡單類型-->
+<!--    <bean class="com.leo.dao.impl.UserDaoImpl" id="userDao">-->
+<!--    <constructor-arg name="name" value="張三"/>-->
+<!--      <constructor-arg name="age" value="18"/>-->
+<!--    </bean>-->
+
+<!--   為了解耦可以使用 特殊用法：將變量名用數據類型代替-->
+<!--    <bean class="com.leo.dao.impl.UserDaoImpl" id="userDao">-->
+<!--        <constructor-arg type="java.lang.String" value="張三"/>-->
+<!--        <constructor-arg type="int" value="18"/>-->
+<!--    </bean>-->
+    <!--index實現解耦,並解決變量重複問題-->
+    <bean class="com.leo.dao.impl.UserDaoImpl" id="userDao">
+        <constructor-arg index="0" value="張三"/>
+        <constructor-arg index="1" value="18"/>
+    </bean>
+
+<!--    1.setter注入-->
+<!--    <bean class="com.leo.dao.impl.BookDaoImpl" id="bookDao">-->
+<!--        <property name="name" value="張三"/>-->
+<!--        <property name="age"  value="20"/>-->
+<!--    </bean>-->
+    <!--   自动装配注入-按类型-->
+    <bean class="com.leo.service.impl.BookServiceImpl" id="bookService" autowire="byType"/>
+
+
+<!--    2.1 構造器注入-對象類型-->
+<!--    constructor-arg name屬性的值為構造器的形參，ref為bean的id的值-->
+<!--    <bean class="com.leo.service.impl.UserServiceImpl" id="userService">-->
+<!--        <constructor-arg name="userDao" ref="userDao"/>-->
+<!--    </bean>-->
+
+<!--    自动装配注入-按构造方法 -->
+<!--    constructor-arg name屬性的值為構造器的形參，ref為bean的id的值-->
+    <bean class="com.leo.service.impl.UserServiceImpl" id="userService" autowire="constructor"/>
+
+</beans>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    1.無參構造創建bean實例化-->
+    <bean id="bookDao" class="com.leo.dao.impl.BookDaoImpl"/>
+<!--        初始化方法和銷毀方法需要配置-->
+<!--<bean  class="com.leo.dao.impl.BookDaoImpl" init-method="init" destroy-method="destroy"/>-->
+
+    <!-- 2.靜態工廠創建bean實例化-->
+<!--    factory-method="getOderDao"指定工廠方法名稱-->
+<!--    <bean id="bookDao2" class="com.leo.dao.factory.OderFactory" factory-method="getOderDao"/>-->
+
+<!--3.實例工廠創建bean實例化-->
+<!--  factory-bean="orderFactory"指定工廠bean的id-->
+    <!-- factory-method="getOderDao"指定工廠方法名稱-->
+<!--    需要先創建工廠bean-->
+<!--    <bean id="userFactory" class="com.leo.dao.factory.UserDaoFactory"/>-->
+<!--&lt;!&ndash;    再創建工廠bean的實例&ndash;&gt;-->
+<!--    <bean id="userDao" factory-bean="userFactory" factory-method="getUserDao"/>-->
+
+<!-- 4.使用FactoryBean創建bean實例化-->
+    <bean id="userDao" class="com.leo.dao.factory.UserDaoFactoryBean"/>
+</beans>
